@@ -32,6 +32,7 @@ class Core {
 
     
         //got to 9:50 just going to create pages.php
+        //testing changes
     }
 
     public function getUrl(){
