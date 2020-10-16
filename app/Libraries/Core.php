@@ -15,9 +15,11 @@ class Core {
         //print_r($this->getUrl());
 
         $url  = $this->getUrl();
-
+        //if(!isset($url)){
+        //    $url = 'Pages'; //a hack to make sure its not empty
+        //}
         //look in controllers for first value, from index.php
-        if(file_exists('../app/controllers/' . ucwords($url[0]) . 'php')){
+        if(isset($url[0]) && file_exists('../app/controllers/' . ucwords($url[0]) . '.php')){
             //set  as current conntroller
             $this->currentController  = ucwords($url[0]);
             //unset the 0 index
@@ -30,9 +32,24 @@ class Core {
         // eg $pages = new pages
         $this->currentController = new $this->currentController;
 
-    
-        //got to 9:50 just going to create pages.php
-        //testing changes
+        //check for the second part of the url
+        if(isset($url[1])){
+            //check to see if the method exists in the controller
+            if(method_exists($this->currentController, $url[1])){
+                $this->currentMethod =$url[1];
+                unset($url[1]);
+            }
+        }
+
+        //get params, does it have them or will it be empty?
+        $this->params = $url ? array_values($url) : [];
+
+        //call a callback with array of params
+        call_user_func_array([$this->currentController, 
+                              $this->currentMethod],
+                              $this->params);
+
+
     }
 
     public function getUrl(){

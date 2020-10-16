@@ -1,8 +1,9 @@
 <?php
+//load config 
+require_once 'config/config.php';
 
-//load the libraries
-
-require_once 'Libraries/Core.php';
-require_once 'Libraries/Controller.php';
-require_once 'Libraries/Database.php';
-
+//auto load core Libraries
+//library files must match the class names
+spl_autoload_register(function($classname){
+    require_once 'Libraries/' . $classname . '.php';
+});
