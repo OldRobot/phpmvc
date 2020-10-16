@@ -31,7 +31,7 @@ class Core {
         $this->currentController = new $this->currentController;
 
     
-    //got to 9:50
+        //got to 9:50 just going to create pages.php
     }
 
     public function getUrl(){
