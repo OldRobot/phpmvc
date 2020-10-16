@@ -18,8 +18,20 @@ class Core {
 
         //look in controllers for first value, from index.php
         if(file_exists('../app/controllers/' . ucwords($url[0]) . 'php')){
-            
+            //set  as current conntroller
+            $this->currentController  = ucwords($url[0]);
+            //unset the 0 index
+            unset($url[0]);
         }
+        //require the controller
+        require_once '../app/controllers/' . $this->currentController . '.php';
+
+        // Instantiate the controller class.
+        // eg $pages = new pages
+        $this->currentController = new $this->currentController;
+
+    
+    //got to 9:50
     }
 
     public function getUrl(){
