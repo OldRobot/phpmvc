@@ -8,7 +8,7 @@ class Controller {
     //load model
     public function model($model){
         //require model file
-        require_once '..app/models/' . $model . '.php';
+        require_once '../app/models/' . $model . '.php';
 
         //instantiate the model
         // ie if user is past in  --   new User()
