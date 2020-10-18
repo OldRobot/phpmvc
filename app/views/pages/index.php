@@ -5,8 +5,8 @@
 
 <ul>
     <?php foreach($data['posts'] as $post) : ?>
-        
-    <?php
+        <li><?php echo $post->title; ?></li>
+    <?php endforeach; ?>
 
 </ul>
 
