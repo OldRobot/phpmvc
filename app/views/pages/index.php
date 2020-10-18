@@ -2,4 +2,13 @@
 
 <h1><?php echo $data['title']; ?></h1>
 
+
+<ul>
+    <?php foreach($data['posts'] as $post) : ?>
+        
+    <?php
+
+</ul>
+
+
 <?php require APPROOT . '/views/inc/footer.php'; ?>
